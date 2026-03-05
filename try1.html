@@ -5,392 +5,173 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hydrogen: Another Chapter in ExxonMobil’s Lower-Emissions Ambitions</title>
+<title>The Business of Carbon Capture and Storage</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family:'Libre Baskerville', serif;
-background:#f6f6f6;
+background:white;
 color:#111;
 }
 
-a{ text-decoration:none; color:inherit; }
-
-header{
-background:#000;
-color:white;
-position:sticky;
-top:0;
-z-index:1000;
-}
+/* Top partner bar */
 
 .topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-max-width:1200px;
-margin:auto;
+font-family:"Source Sans 3",sans-serif;
+font-size:13px;
+letter-spacing:.5px;
+border-bottom:1px solid #e5e5e5;
 padding:12px 20px;
-}
-
-.logo{
-font-size:26px;
-font-weight:bold;
-letter-spacing:1px;
-}
-
-.menu-toggle{
-display:none;
-font-size:22px;
-cursor:pointer;
-}
-
-.nav{
-background:white;
-border-bottom:1px solid #ddd;
-}
-
-.nav ul{
 display:flex;
-gap:22px;
-list-style:none;
-padding:10px 20px;
-margin:0;
-max-width:1200px;
-margin:auto;
-font-family:'Inter', sans-serif;
-font-size:14px;
-font-weight:600;
+justify-content:center;
+color:#666;
 }
+
+/* Main hero */
 
 .hero{
-position:relative;
+width:100%;
 }
 
 .hero img{
 width:100%;
+height:auto;
 display:block;
 }
 
-.hero-text{
-position:absolute;
-bottom:50px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(0,0,0,.65);
-color:white;
-padding:30px;
-max-width:850px;
-}
+/* Caption under hero */
 
-.hero-text h1{
-margin:0;
-font-size:38px;
-}
-
-.hero-text p{
-margin-top:10px;
-font-size:18px;
-}
-
-.main{
-display:grid;
-grid-template-columns:3fr 1fr;
-gap:40px;
-max-width:1200px;
+.caption{
+max-width:720px;
 margin:auto;
-padding:40px 20px;
-background:white;
+padding:10px 20px;
+font-family:"Source Sans 3",sans-serif;
+font-size:12px;
+color:#777;
 }
 
-.article p{
-font-size:18px;
-line-height:1.75;
-margin-bottom:22px;
+/* Article container */
+
+.container{
+max-width:720px;
+margin:auto;
+padding:20px;
 }
 
-.byline{
-font-family:'Inter', sans-serif;
-color:#666;
-margin-bottom:20px;
+/* Headline */
+
+h1{
+font-family:"Libre Baskerville",Georgia,serif;
+font-size:44px;
+line-height:1.15;
+margin-top:25px;
+margin-bottom:15px;
+font-weight:700;
 }
 
-.share{
-display:flex;
-gap:10px;
+/* Author line */
+
+.meta{
+font-family:"Source Sans 3",sans-serif;
+font-size:14px;
+color:#777;
 margin-bottom:30px;
 }
 
-.share button{
-border:1px solid #ddd;
-background:white;
-padding:6px 10px;
-cursor:pointer;
-font-family:'Inter', sans-serif;
+/* Article body */
+
+.article{
+font-family:"Libre Baskerville",Georgia,serif;
+font-size:20px;
+line-height:1.8;
 }
 
-.video{
-margin:30px 0;
+.article p{
+margin-bottom:28px;
 }
 
-.video iframe{
-width:100%;
-height:400px;
-}
+/* Pull quote */
 
-.sidebar{
-border-left:1px solid #eee;
-padding-left:20px;
-}
-
-.sidebar h3{
-border-bottom:2px solid black;
-padding-bottom:6px;
-margin-top:0;
-}
-
-.side-card{
-margin-bottom:25px;
-}
-
-.side-card img{
-width:100%;
-}
-
-.side-card p{
-font-family:'Inter', sans-serif;
-font-size:14px;
-}
-
-footer{
-background:#111;
-color:white;
-padding:40px 20px;
-margin-top:40px;
-font-family:'Inter', sans-serif;
-}
-
-.footer-grid{
-max-width:1200px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:30px;
-}
-
-.footer-grid h4{
-margin-top:0;
-}
-
-.bottom{
-text-align:center;
-margin-top:30px;
-opacity:.7;
-font-size:13px;
-}
-
-.fade{
-opacity:0;
-transform:translateY(20px);
-transition:all .8s ease;
-}
-
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
-
-@media(max-width:900px){
-
-.nav ul{
-display:none;
-flex-direction:column;
-background:white;
-}
-
-.nav.active ul{
-display:flex;
-}
-
-.menu-toggle{
-display:block;
-}
-
-.main{
-grid-template-columns:1fr;
-}
-
-.hero-text h1{
+.quote{
 font-size:28px;
+line-height:1.4;
+margin:50px 0;
+font-style:italic;
+border-left:4px solid #ddd;
+padding-left:20px;
+color:#444;
 }
 
-.video iframe{
-height:250px;
+/* Mobile */
+
+@media(max-width:768px){
+
+h1{
+font-size:34px;
+}
+
+.article{
+font-size:18px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
-
 <div class="topbar">
-
-<div class="logo">The Wall Street Journal</div>
-
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
+The Wall Street Journal | Partner Content
 </div>
 
-<nav class="nav" id="navMenu">
-<ul>
-<li>Home</li>
-<li>World</li>
-<li>U.S.</li>
-<li>Politics</li>
-<li>Economy</li>
-<li>Business</li>
-<li>Tech</li>
-<li>Markets</li>
-<li>Opinion</li>
-</ul>
-</nav>
-
-</header>
-
-<section class="hero fade">
-
+<div class="hero">
 <img src="https://partners.wsj.com/exxonmobil/business-of-carbon-capture-and-storage/wp-content/uploads/sites/828/2022/05/EXXONMOBIL_Article2_Hero_1600x930b.jpg">
+</div>
 
-<div class="hero-text">
+<div class="caption">
+Carbon capture technology can reduce industrial emissions while supporting energy demand.
+</div>
 
-<h1>Hydrogen: Another Chapter in ExxonMobil’s Lower-Emissions Ambitions</h1>
+<div class="container">
 
-<p>New world-scale blue hydrogen facility plans to fuel operations and reduce emissions.</p>
+<h1>
+The Business of Carbon Capture and Storage
+</h1>
+
+<div class="meta">
+By ExxonMobil | May 2022
+</div>
+
+<div class="article">
+
+<p>
+Carbon capture and storage (CCS) is emerging as a powerful tool in the global effort to reduce emissions while supporting economic growth. By capturing carbon dioxide from industrial processes and storing it safely underground, companies can significantly reduce their carbon footprint.
+</p>
+
+<p>
+Many industries—from energy production to manufacturing—are exploring CCS as a solution that balances environmental responsibility with continued demand for energy and materials.
+</p>
+
+<div class="quote">
+“Carbon capture could play a major role in helping the world reach net-zero emissions.”
+</div>
+
+<p>
+Projects around the world are demonstrating how captured carbon can be transported and stored deep underground, preventing it from entering the atmosphere.
+</p>
+
+<p>
+As technology improves and investment grows, CCS is expected to play a critical role in achieving global climate goals while maintaining reliable energy supplies.
+</p>
 
 </div>
 
-</section>
-
-<section class="main">
-
-<article class="article fade">
-
-<div class="byline">Custom Content by ExxonMobil</div>
-
-<div class="share">
-<button>Facebook</button>
-<button>Twitter</button>
-<button>LinkedIn</button>
-<button>Email</button>
 </div>
-
-<p>There’s a buzz in Baytown, Texas. The city just outside of Houston is already home to one of ExxonMobil’s largest integrated refining and chemical complexes.</p>
-
-<p>Blue hydrogen is a low-carbon fuel produced from natural gas combined with carbon capture and storage (CCS). This clean-burning fuel produces zero CO₂ emissions when combusted.</p>
-
-<p>Combining hydrogen with carbon capture and storage supports ExxonMobil’s larger ambition of reaching net-zero greenhouse gas emissions by 2050.</p>
-
-<div class="video">
-
-<iframe src="https://www.youtube.com/embed/9xwazD5SyVg" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
-<p>Once completed, the facility could produce up to 1 billion cubic feet of blue hydrogen per day while capturing up to 10 million metric tons of CO₂ annually.</p>
-
-<p>Fueling the Baytown complex with hydrogen would significantly reduce emissions across its manufacturing operations.</p>
-
-</article>
-
-<aside class="sidebar fade">
-
-<h3>Related Content</h3>
-
-<div class="side-card">
-
-<img src="https://partners.wsj.com/exxonmobil/business-of-carbon-capture-and-storage/wp-content/uploads/sites/828/2022/07/ExxonMobil_Article3_600x400_01.jpg">
-
-<p>Renewable Diesel for Our Changing World</p>
-
-</div>
-
-<div class="side-card">
-
-<img src="https://partners.wsj.com/exxonmobil/business-of-carbon-capture-and-storage/wp-content/uploads/sites/828/2022/03/ExxonMobil_Thumbnail_600x400b.jpg">
-
-<p>An Environmental Solution With Economic Benefits</p>
-
-</div>
-
-</aside>
-
-</section>
-
-<footer>
-
-<div class="footer-grid">
-
-<div>
-<h4>WSJ Membership</h4>
-<p>Subscription Options</p>
-<p>Student Journal</p>
-</div>
-
-<div>
-<h4>Customer Service</h4>
-<p>Contact Us</p>
-<p>Customer Center</p>
-</div>
-
-<div>
-<h4>Tools</h4>
-<p>Newsletters</p>
-<p>RSS Feeds</p>
-</div>
-
-<div>
-<h4>About</h4>
-<p>About Us</p>
-<p>Careers</p>
-</div>
-
-</div>
-
-<div class="bottom">
-
-© 2026 Dow Jones & Company
-
-</div>
-
-</footer>
-
-<script>
-
-function toggleMenu(){
-document.getElementById("navMenu").classList.toggle("active")
-}
-
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show")
-}
-})
-})
-
-document.querySelectorAll(".fade").forEach(el=>{
-observer.observe(el)
-})
-
-</script>
 
 </body>
 </html>
