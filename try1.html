@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Hydrogen: Another Chapter in ExxonMobil’s Lower-Emissions Ambitions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family: Georgia, "Times New Roman", serif;
-background:#f4f4f4;
+font-family:'Libre Baskerville', serif;
+background:#f6f6f6;
 color:#111;
 }
 
-a{
-text-decoration:none;
-color:#111;
-}
+a{ text-decoration:none; color:inherit; }
 
 header{
 background:#000;
 color:white;
-padding:12px 20px;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
-.top-bar{
+.topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
 max-width:1200px;
 margin:auto;
+padding:12px 20px;
 }
 
 .logo{
-font-size:28px;
+font-size:26px;
 font-weight:bold;
 letter-spacing:1px;
+}
+
+.menu-toggle{
+display:none;
+font-size:22px;
+cursor:pointer;
 }
 
 .nav{
@@ -46,17 +56,15 @@ border-bottom:1px solid #ddd;
 
 .nav ul{
 display:flex;
-gap:20px;
+gap:22px;
 list-style:none;
-margin:0;
 padding:10px 20px;
+margin:0;
 max-width:1200px;
 margin:auto;
-}
-
-.nav li{
+font-family:'Inter', sans-serif;
 font-size:14px;
-font-weight:bold;
+font-weight:600;
 }
 
 .hero{
@@ -65,34 +73,33 @@ position:relative;
 
 .hero img{
 width:100%;
-height:auto;
 display:block;
 }
 
 .hero-text{
 position:absolute;
-bottom:40px;
+bottom:50px;
 left:50%;
 transform:translateX(-50%);
+background:rgba(0,0,0,.65);
 color:white;
-background:rgba(0,0,0,0.55);
-padding:25px;
-max-width:800px;
+padding:30px;
+max-width:850px;
 }
 
 .hero-text h1{
 margin:0;
-font-size:34px;
+font-size:38px;
 }
 
-.hero-text h3{
+.hero-text p{
 margin-top:10px;
-font-weight:normal;
+font-size:18px;
 }
 
 .main{
 display:grid;
-grid-template-columns: 3fr 1fr;
+grid-template-columns:3fr 1fr;
 gap:40px;
 max-width:1200px;
 margin:auto;
@@ -102,12 +109,37 @@ background:white;
 
 .article p{
 font-size:18px;
-line-height:1.7;
+line-height:1.75;
+margin-bottom:22px;
+}
+
+.byline{
+font-family:'Inter', sans-serif;
+color:#666;
 margin-bottom:20px;
 }
 
-.article em{
-color:#555;
+.share{
+display:flex;
+gap:10px;
+margin-bottom:30px;
+}
+
+.share button{
+border:1px solid #ddd;
+background:white;
+padding:6px 10px;
+cursor:pointer;
+font-family:'Inter', sans-serif;
+}
+
+.video{
+margin:30px 0;
+}
+
+.video iframe{
+width:100%;
+height:400px;
 }
 
 .sidebar{
@@ -116,16 +148,22 @@ padding-left:20px;
 }
 
 .sidebar h3{
-border-bottom:2px solid #000;
-padding-bottom:8px;
+border-bottom:2px solid black;
+padding-bottom:6px;
+margin-top:0;
 }
 
-.sidebar-item{
+.side-card{
 margin-bottom:25px;
 }
 
-.sidebar img{
+.side-card img{
 width:100%;
+}
+
+.side-card p{
+font-family:'Inter', sans-serif;
+font-size:14px;
 }
 
 footer{
@@ -133,9 +171,10 @@ background:#111;
 color:white;
 padding:40px 20px;
 margin-top:40px;
+font-family:'Inter', sans-serif;
 }
 
-.footer-container{
+.footer-grid{
 max-width:1200px;
 margin:auto;
 display:grid;
@@ -143,30 +182,54 @@ grid-template-columns:repeat(4,1fr);
 gap:30px;
 }
 
-.footer-container h4{
+.footer-grid h4{
 margin-top:0;
 }
 
-.footer-bottom{
+.bottom{
 text-align:center;
 margin-top:30px;
-font-size:13px;
 opacity:.7;
+font-size:13px;
+}
+
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:all .8s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 
 @media(max-width:900px){
+
+.nav ul{
+display:none;
+flex-direction:column;
+background:white;
+}
+
+.nav.active ul{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
 
 .main{
 grid-template-columns:1fr;
 }
 
-.sidebar{
-border:none;
-padding:0;
+.hero-text h1{
+font-size:28px;
 }
 
-.hero-text h1{
-font-size:26px;
+.video iframe{
+height:250px;
 }
 
 }
@@ -177,13 +240,16 @@ font-size:26px;
 <body>
 
 <header>
-<div class="top-bar">
-<div class="logo">The Wall Street Journal</div>
-<div>Mar 05, 2026</div>
-</div>
-</header>
 
-<nav class="nav">
+<div class="topbar">
+
+<div class="logo">The Wall Street Journal</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+</div>
+
+<nav class="nav" id="navMenu">
 <ul>
 <li>Home</li>
 <li>World</li>
@@ -197,47 +263,71 @@ font-size:26px;
 </ul>
 </nav>
 
-<section class="hero">
+</header>
+
+<section class="hero fade">
+
 <img src="https://partners.wsj.com/exxonmobil/business-of-carbon-capture-and-storage/wp-content/uploads/sites/828/2022/05/EXXONMOBIL_Article2_Hero_1600x930b.jpg">
 
 <div class="hero-text">
+
 <h1>Hydrogen: Another Chapter in ExxonMobil’s Lower-Emissions Ambitions</h1>
-<h3>New world-scale blue hydrogen facility plans to fuel operations and reduce emissions.</h3>
+
+<p>New world-scale blue hydrogen facility plans to fuel operations and reduce emissions.</p>
+
 </div>
+
 </section>
 
 <section class="main">
 
-<article class="article">
+<article class="article fade">
 
-<p><em>By ExxonMobil</em></p>
+<div class="byline">Custom Content by ExxonMobil</div>
+
+<div class="share">
+<button>Facebook</button>
+<button>Twitter</button>
+<button>LinkedIn</button>
+<button>Email</button>
+</div>
 
 <p>There’s a buzz in Baytown, Texas. The city just outside of Houston is already home to one of ExxonMobil’s largest integrated refining and chemical complexes.</p>
 
-<p>Blue hydrogen is a low-carbon fuel produced from natural gas combined with carbon capture and storage (CCS). This clean-burning fuel produces zero CO₂ when combusted.</p>
+<p>Blue hydrogen is a low-carbon fuel produced from natural gas combined with carbon capture and storage (CCS). This clean-burning fuel produces zero CO₂ emissions when combusted.</p>
 
-<p>Combining hydrogen with carbon capture and storage supports ExxonMobil’s larger ambition for net-zero greenhouse gas emissions by 2050.</p>
+<p>Combining hydrogen with carbon capture and storage supports ExxonMobil’s larger ambition of reaching net-zero greenhouse gas emissions by 2050.</p>
 
-<p>Once completed, the new facility could produce up to 1 billion cubic feet of blue hydrogen per day. The carbon capture system could capture up to 10 million metric tons of CO₂ annually.</p>
+<div class="video">
 
-<p>Fueling the Baytown facility with blue hydrogen could significantly reduce emissions across the integrated complex.</p>
+<iframe src="https://www.youtube.com/embed/9xwazD5SyVg" frameborder="0" allowfullscreen></iframe>
 
-<p>“This is a big step for the company because it enables us to reduce the emissions of the products made at Baytown,” said venture executive Michael Bey.</p>
+</div>
+
+<p>Once completed, the facility could produce up to 1 billion cubic feet of blue hydrogen per day while capturing up to 10 million metric tons of CO₂ annually.</p>
+
+<p>Fueling the Baytown complex with hydrogen would significantly reduce emissions across its manufacturing operations.</p>
 
 </article>
 
-<aside class="sidebar">
+<aside class="sidebar fade">
 
 <h3>Related Content</h3>
 
-<div class="sidebar-item">
+<div class="side-card">
+
 <img src="https://partners.wsj.com/exxonmobil/business-of-carbon-capture-and-storage/wp-content/uploads/sites/828/2022/07/ExxonMobil_Article3_600x400_01.jpg">
+
 <p>Renewable Diesel for Our Changing World</p>
+
 </div>
 
-<div class="sidebar-item">
+<div class="side-card">
+
 <img src="https://partners.wsj.com/exxonmobil/business-of-carbon-capture-and-storage/wp-content/uploads/sites/828/2022/03/ExxonMobil_Thumbnail_600x400b.jpg">
+
 <p>An Environmental Solution With Economic Benefits</p>
+
 </div>
 
 </aside>
@@ -246,42 +336,61 @@ font-size:26px;
 
 <footer>
 
-<div class="footer-container">
+<div class="footer-grid">
 
 <div>
 <h4>WSJ Membership</h4>
 <p>Subscription Options</p>
-<p>Corporate Subscriptions</p>
 <p>Student Journal</p>
 </div>
 
 <div>
 <h4>Customer Service</h4>
-<p>Customer Center</p>
 <p>Contact Us</p>
+<p>Customer Center</p>
 </div>
 
 <div>
 <h4>Tools</h4>
 <p>Newsletters</p>
 <p>RSS Feeds</p>
-<p>Podcasts</p>
 </div>
 
 <div>
 <h4>About</h4>
 <p>About Us</p>
 <p>Careers</p>
-<p>Advertise</p>
 </div>
 
 </div>
 
-<div class="footer-bottom">
-Copyright © 2026 Dow Jones & Company
+<div class="bottom">
+
+© 2026 Dow Jones & Company
+
 </div>
 
 </footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("navMenu").classList.toggle("active")
+}
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+
+document.querySelectorAll(".fade").forEach(el=>{
+observer.observe(el)
+})
+
+</script>
 
 </body>
 </html>
